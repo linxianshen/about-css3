@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>圆形菜单收缩效果</title>
+    <style type="text/css">
+    *{
+    	padding: 0;
+    	margin: 0;
+    }
+    .demo{
+		padding: 2em 0;
+		transform: translate3d(0, 0, 0);
+		background: dimgrey;
+	}
+	.navbar{
+		width: 150px;
+		height: 150px;
+		line-height: 150px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 70px auto;
+		position: relative;
+		cursor: pointer;
+		text-align: center;
+		font-size: 1.75em;
+		font-weight: bold;
+		color: #99b977;
+		/*transtion 第一个参数过渡时间, 第二参数是延时时间*/
+		transition: 0.24s .3s;    
+	}
+
+	.navbar:hover{
+		background: rgba(255, 255, 255, 0.75);
+	}
+
+    .navbar .menu{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 75px;
+		left: 75px;
+		/*border: 150px solid transparent;*/
+		cursor: default;
+		border-radius: 50%;
+		/*缩放为0*/
+		transform: scale(0);   
+		transition: transform 1.4s 0.07s;
+		z-index: -1;
+	}
+
+	.navbar:hover .menu{
+		transition: transform 0.4s 0.08s, z-index   0s  0.5s;
+		transform: scale(1);
+		z-index: 1;
+	}
+	.navbar .menu li{
+		position: absolute;
+		/*li位置*/
+		top: -100px;
+		left: -100px;
+		/*当做转换参照点, 即后面的旋转参照点, 相对位置定在主菜单的中心*/
+		transform-origin: 100px 100px;
+		transition: all 0.5s 0.1s;
+	}
+	.navbar:hover .menu li{
+		transition: all 0.6s;
+	}
+	.navbar .menu li a{
+		width: 45px;
+		height: 45px;
+		line-height: 45px;
+		border-radius: 50%;
+		background: #fff;
+		position: absolute;
+		font-size: 60%;
+		color: #99b977;
+		transition: 0.6s;
+		text-decoration: none;
+	}
+
+	.navbar:hover .menu li:nth-child(1){
+		transition-delay: 0.02s;
+		/*li的位置与参照点连线的角度开始 转 360/n个角*/
+		transform: rotate(85deg);
+	}
+	.navbar:hover .menu li:nth-child(1) a{
+		transition-delay: 0.04s;
+		/*因为li转了某个角度, 防止a的字体倾斜, 这个角度加上li转的角度需为360的倍数*/
+		transform: rotate(275deg);
+	}
+
+	.navbar:hover .menu li:nth-child(2){
+		transition-delay: 0.04s;
+		transform: rotate(125deg);
+	}
+	.navbar:hover .menu li:nth-child(2) a{
+		transition-delay: 0.06s;
+		transform: rotate(235deg);
+	}
+
+	.navbar:hover .menu li:nth-child(3){
+		transition-delay: 0.06s;
+		transform: rotate(165deg);
+	}
+	.navbar:hover .menu li:nth-child(3) a{
+		transition-delay: 0.12s;
+		transform: rotate(555deg);
+	}
+	.navbar:hover .menu li:nth-child(4){
+		transition-delay: 0.08s;
+		transform: rotate(205deg);
+	}
+	.navbar:hover .menu li:nth-child(4) a{
+		transition-delay: 0.16s;
+		transform: rotate(515deg);
+	}
+	.navbar:hover .menu li:nth-child(5){
+		transition-delay: 0.1s;
+		transform: rotate(245deg);
+	}
+	.navbar:hover .menu li:nth-child(5) a{
+		transition-delay: 0.2s;
+		transform: rotate(475deg);
+	}
+	.navbar:hover .menu li:nth-child(6){
+		transition-delay: 0.12s;
+		transform: rotate(285deg);
+	}
+	.navbar:hover .menu li:nth-child(6) a{
+		transition-delay: 0.24s;
+		transform: rotate(435deg);
+	}
+	.navbar:hover .menu li:nth-child(7){
+		transition-delay: 0.14s;
+		transform: rotate(325deg);
+	}
+	.navbar:hover .menu li:nth-child(7) a{
+		transition-delay: 0.28s;
+		transform: rotate(395deg);
+	}
+	.navbar:hover .menu li:nth-child(8){
+		transition-delay: 0.16s;
+		transform: rotate(365deg);
+	}
+	.navbar:hover .menu li:nth-child(8) a{
+		transition-delay: 0.32s;
+		transform: rotate(355deg);
+	}
+	.navbar:hover .menu li:nth-child(9){
+		transition-delay: 0.18s;
+		transform: rotate(405deg);
+	}
+	.navbar:hover .menu li:nth-child(9) a{
+		transition-delay: 0.36s;
+		transform: rotate(315deg);
+	}
+
+	p{
+		text-align: center;
+	}
+    
+    </style>
+</head>
+
+<!-- 9个角, 40° -->
+<body>
+    <div class="demo">
+        <div class="navbar">menu
+            <ul class="menu">
+                <li><a href="#" class="fa fa-facebook">1</a></li>
+                <li><a href="#" class="fa fa-google-plus">2</a></li>
+                <li><a href="#" class="fa fa-twitter">3</a></li>
+                <li><a href="#" class="fa fa-linkedin">4</a></li>
+                <li><a href="#" class="fa fa-pinterest">5</a></li>
+                <li><a href="#" class="fa fa-rss">6</a></li>
+                <li><a href="#" class="fa fa-instagram">7</a></li>
+                <li><a href="#" class="fa fa-skype">8</a></li>
+                <li><a href="#" class="fa fa-github">9</a></li>
+            </ul>
+        </div>
+    </div>
+    <p>可以做出蛮多的效果的.比方说页面左上角的4分之一圆, 同理可以做到隐藏的子菜单, 沿着半圆显示等等, 待衍生</p>
+</body>
+
+</html>

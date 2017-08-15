@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>测试clip-path的各种属性值</title>
+    <style type="text/css">
+    .path {
+        /*倒三角*/
+        /*-webkit-clip-path: polygon(50% 0, 0 100% ,100% 100%);*/
+        /*对话气泡形*/
+        /*-webkit-clip-path: polygon(0% 0%,30% 0%,30% 40%,23% 40%,25% 50%,15% 40%,0% 40%);*/
+        /*五角星*/
+        /*width: 100px;
+			height: 100px;
+			-webkit-clip-path: polygon(50% 0%, 65% 33%, 100% 33%, 80% 60%, 90% 100%, 50% 75%, 10% 100%,20% 60%,0 33%,35% 33%);*/
+        /*圆*/
+        -webkit-clip-path: circle(30% at 50% 50%);
+        transition: all .2s ease-in;
+        /*以svg为剪裁标准, 设置镂空文字样式*/
+        /*-webkit-clip-path: url(#svgTextPath);*/
+        /*以svg,为clip-path设动画*/
+        /*height: 600px;
+        width: 740px;
+        -webkit-clip-path: url(#mask);*/
+    }
+
+    /*简单的path改变之后的动画*/
+    .path:hover{
+    	-webkit-clip-path: circle(100% at 50% 50%);
+    }
+    </style>
+</head>
+
+<body>
+    <img class="path" src="http://yunkus.com/wp-content/themes/zxx/images/T900-500.png" alt="">
+    <!-- 镂空字体的svg 剪裁 -->
+    <svg height="0" width="0">
+        <defs>
+            <clipPath id="svgTextPath">
+                <text x="0" y="300" textLength="800px" lengthAdjust="spacing" font-family="Vollkorn" font-size="240px" font-weight="700" font-style="italic">蔡双临</text>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- clipPath的动画 -->
+    <svg height="0" width="0">
+    	<defs>
+    		<clipPath id="mask">
+    			<rect x="0" y="0" width="200" height="600">
+    				<animate attributeType="XML" attributeName="x" from="0" to="740" dur="10s" repeatCount="indefinite"></animate>
+    			</rect>
+    		</clipPath>
+    	</defs>
+    </svg>
+</body>
+<script type="text/javascript">
+
+</script>
+
+</html>
